@@ -17,14 +17,15 @@ Before(function () {
         .build();
 })
 
-Given('I visit amazon app online', async function () {
-   await driver.get('https://www.amazon.com');
+Given('I visit the online bible app', async function () {
+   await driver.get('https://www.bible.com');
    await driver.manage().window().maximize();
-   await driver.sleep(10000);    
+   await driver.sleep(5000);    
 });
 
-Then('click on Your account', async function () {
-    let click_elem = await driver.findElement(By.xpath('//*[contains(text(), "Your Account")]'));
+Then('click on bible text on the upper left', async function () {
+    //let click_elem = await driver.findElement(By.xpath('//*[contains(text(), "Your Account")]'));
+    let click_elem = await driver.findElement(By.xpath('//*[@id="__next"]/div[2]/header/div/div[1]/a[1]'));
     await click_elem.click();
 })
 
@@ -34,9 +35,21 @@ Then('click on the signin', async function () {
 })
 
 
-When('I type my email {string} and hit enter', async function (email) {
-    let click_elem = await driver.findElement(By.xpath('//*[@id="ap_email"]'));
-    await click_elem.sendKeys(email + "\n");
+When('I type {string} and hit enter', async function (type) {
+    let click_elem = await driver.findElement(By.xpath('//input[@name="Search"]'));
+    await click_elem.sendKeys(type + "\n");
+})
+
+
+When('I type email {string} and hit enter', async function (type) {
+    let click_elem = await driver.findElement(By.xpath('//*[@id="username"]'));
+    await click_elem.sendKeys(type + "\n");
+})
+
+
+When('I type password {string} and hit enter', async function (type) {
+    let click_elem = await driver.findElement(By.xpath('//*[@id="password"]'));
+    await click_elem.sendKeys(type + "\n");
 })
 
 
@@ -45,12 +58,45 @@ When('I type incorrect password {string} and hit enter', async function (email) 
     await click_elem.sendKeys(email + "\n");
 })
 
+Then('click on mark 14 17 NIV', async function () {
+    await driver.sleep(2000);    
+    let click_elem = await driver.findElement(By.xpath('//*[@href="/bible/111/mrk.14.17"]'));
+    await click_elem.click();
+})
 
-Then('the text {string} is displayed', async function (errormessage) {
+Then('click on the humbergar menu', async function () {
+    //await driver.sleep(5000);    
+    let click_elem = await driver.findElement(By.xpath('//*[@aria-label="profile menu"]'));
+    await click_elem.click();
+})
+
+Then('click on sign in from the dropdown', async function () {
+    await driver.sleep(2000);    
+    let click_elem = await driver.findElement(By.xpath('//*[@aria-label="Sign In"]'));
+    await click_elem.click();
+})
+
+Then('click on the sign in button', async function () {
+    await driver.sleep(2000);    
+    let click_elem = await driver.findElement(By.xpath('//*[@class="truncate w-full"]'));
+    await click_elem.click();
+    await driver.sleep(5000);
+})
+
+
+Then('the text {string} is displayed', async function (string) {
     await driver.sleep(1000);
-    let click_elem  = await driver.findElement(By.xpath('//*[@id="auth-error-message-box"]'));
-    let click_elem1 = await driver.findElement(By.xpath('//*[contains(text(), "Your password is incorrect")]'));
-    assert.equal('Your password is incorrect', errormessage)
+    let click_elem  = await driver.findElement(By.xpath("//title[contains(text(),'"+string+"')]"));
+    //let click_elem1 = await driver.findElement(By.xpath('//*[contains(text(), "Your password is incorrect")]'));
+    //assert.equal('Your password is incorrect', errormessage)
+})
+
+
+Then('the message {string} is displayed', async function (string) {
+    await driver.sleep(1000);
+    let click_elem  = await driver.findElement(By.xpath("//*[contains(text(),'"+string+"')]"));
+    //let click_elem1 = await driver.findElement(By.xpath('//*[contains(text(), "Your password is incorrect")]'));
+    //assert.equal('Your password is incorrect', errormessage)
 })
 
 
