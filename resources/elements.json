@@ -1,0 +1,16 @@
+{
+    "questionsfirstname": "//input[@data-fs-field-alias='first']",
+    "questionslastname": "//input[@autocomplete='family-name']",
+    "questionsemail": "//input[@data-fs-field-name='email']",
+    "questionslanguage": "//*[@label='Language']",
+    "questionsplatform": "//*[@label='Platform']",
+    "questionsBrowerType": "//*[@label='Web Browser Type ']",
+    "questionsTypeOfQuestion": "//*[@label='Type of Question']",
+    "questionsAppVersion": "//*[@label='App Version']",
+    "questionsTextArea": "//*[@label='Let us know how we can help!']",
+    "humbergarMenu": "//*[@aria-label='profile menu']",
+    "SignIn": "//*[@aria-label='Sign In']",
+    "questionlink": "//a[contains(text(), 'Questions? Our Support Team is here to help.')]",
+    "Submit": "//*[@type='submit']"
+    
+}
