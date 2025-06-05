@@ -7,7 +7,7 @@ const {By} = require('selenium-webdriver');
 //const expect = require('expect');
 const assert = require('assert')
 //require('dotenv').config();
-const config = require('C:/Users/ab_ke/OneDrive/Documents/GitHub/cucumbersjs_ui/config.js');
+const config = require('../../config.js');
 const elemestFromFile = require('../../resources/elements.json');
 
 
