@@ -2,10 +2,7 @@ const {setTimeout} = require('timers/promises');
 const {Given, When, Then, Before, After} = require('@cucumber/cucumber');
 const fs = require('fs')
 const assert = require('assert')
-<<<<<<< HEAD
-=======
 //require('dotenv').config();
->>>>>>> 95e0a58cd8c153a0d03c209c97c9a38826dc7900
 const config = require('../../config.js');
 const elemestFromFile = require('../../resources/elements.json');
 const webdriver = require('selenium-webdriver');
