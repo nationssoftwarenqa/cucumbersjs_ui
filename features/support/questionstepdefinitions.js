@@ -1,65 +1,66 @@
 const {setTimeout} = require('timers/promises');
 const {Given, When, Then, Before, After} = require('@cucumber/cucumber');
-//const {expect} = require('chai');
-const webdriver = require('selenium-webdriver');
 const fs = require('fs')
-const {By} = require('selenium-webdriver');
-//const expect = require('expect');
 const assert = require('assert')
-//require('dotenv').config();
-const config = require('C:/Users/ab_ke/OneDrive/Documents/GitHub/cucumbersjs_ui/config.js');
+const config = require('../../config.js');
 const elemestFromFile = require('../../resources/elements.json');
-
+const webdriver = require('selenium-webdriver');
+const {By} = require('selenium-webdriver');
+//const driver = new webdriver.Builder().forBrowser('chrome').build();
 
 const {setDefaultTimeout} = require('@cucumber/cucumber');
 const exp = require('constants');
 setDefaultTimeout(60*1000);
+//const {expect} = require('chai');
+//const expect = require('expect');
+//const driver = require('../../utils.js')
+//require('dotenv').config();
 
-let driver;
-Before(function () {
-    driver = new webdriver.Builder()
-        .forBrowser('chrome')
-        .build();
-})
-
-
+//Step to visit a website
 Given('I visit the online bible {string} app', async function (string) {
-   await driver.get(config[string]);
-   await driver.manage().window().maximize();
-   await driver.sleep(3000);    
+   await config.driver.get(config[string]);
+   await config.driver.manage().window().maximize();
+   //await config.driver.sleep(5000);    
 });
 
-
+//Step to click on an element
 Then('click on the {string} element', async function (string) {
-   //await driver.sleep(1000);    
-    let click_elem = await driver.findElement(By.xpath(elemestFromFile[string]));
+   //await config.driver.sleep(1000);    
+    let click_elem = await config.driver.findElement(By.xpath(elemestFromFile[string]));
     await click_elem.click();
 })
 
-
+//Step to type in an input field
 When('I type {string} in the field {string}', async function (string, string1) {
-   //await driver.sleep(1000);    
-    let click_elem = await driver.findElement(By.xpath(elemestFromFile[string1]));
+   //await config.driver.sleep(1000);    
+    let click_elem = await config.driver.findElement(By.xpath(elemestFromFile[string1]));
     await click_elem.click();
-    let click_elem1 = await driver.findElement(By.xpath(elemestFromFile[string1]));
+    let click_elem1 = await config.driver.findElement(By.xpath(elemestFromFile[string1]));
     await click_elem1.sendKeys(string);
 })
 
-
+//Step to select an element from a downdown
 Then('select {string} from the {string} drowpdown', async function (string, string1) {
-   //await driver.sleep(1000);    
-    let click_elem = await driver.findElement(By.xpath(elemestFromFile[string1]));
+   //await config.driver.sleep(1000);    
+    let click_elem = await config.driver.findElement(By.xpath(elemestFromFile[string1]));
     await click_elem.click();
-    let click_elem1 = await driver.findElement(By.xpath(elemestFromFile[string1]));
+    let click_elem1 = await config.driver.findElement(By.xpath(elemestFromFile[string1]));
     await click_elem1.sendKeys(string + "\n");
 })
 
 
 Then('user hits the {string} key from the field {string}', async function (string, string1) {
-   await driver.sleep(1000);     
-    let click_elem = await driver.findElement(By.xpath(elemestFromFile[string1]));
+   await config.driver.sleep(1000);     
+    let click_elem = await config.driver.findElement(By.xpath(elemestFromFile[string1]));
     await click_elem.click();  
-    let click_elem1 = await driver.findElement(By.xpath(elemestFromFile[string]));
+    let click_elem1 = await config.driver.findElement(By.xpath(elemestFromFile[string]));
     await click_elem1.sendKeys( Key.TAB );
 })
+
+//Step to verify an element on a page
+Then('the text {string} is displayed on the page', async function (string) {
+    await config.driver.sleep(1000);
+    let click_elem  = await config.driver.findElement(By.xpath("//*[contains(text(),'"+string+"')]"));
+})
+
 

@@ -6,6 +6,8 @@ Feature: Bible Web App Ask A Question
              Then click on the "humbergarMenu" element
              Then I wait for "1" seconds
              Then click on the "SignIn" element
+             Then I wait for "2" seconds
+             #Then the text "Please give us as much detail as possible below." is displayed on the page
              Then click on the "questionlink" element
              Then I wait for "3" seconds
              When I type "Nations" in the field "questionsfirstname"
@@ -16,5 +18,6 @@ Feature: Bible Web App Ask A Question
              When I type "Chrome" in the field "questionsBrowerType"
              Then select "Other Question" from the "questionsTypeOfQuestion" drowpdown
              When I type "The Bible App Is Wonderful" in the field "questionsTextArea"
+             Then the text "Submit Form" is displayed on the page
              #Then click on the "Submit" element
             
