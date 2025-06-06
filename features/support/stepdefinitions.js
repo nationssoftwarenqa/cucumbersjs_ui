@@ -46,12 +46,6 @@ When('I type {string} and hit enter', async function (type) {
 })
 
 
-When('I type email {string} and hit enter', async function (type) {
-    let click_elem = await driver.findElement(By.xpath('//*[@id="username"]'));
-    await click_elem.sendKeys(type + "\n");
-})
-
-
 When('I type users {string} and hit enter', async function (string) {
     let click_elem = await config.driver.findElement(By.xpath('//*[@id="username"]'));
     //await click_elem.sendKeys('isakafuseini@gmail.com' + "\n");
