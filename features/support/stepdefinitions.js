@@ -7,6 +7,12 @@ const elemestFromFile = require('../../resources/elements.json');
 const webdriver = require('selenium-webdriver');
 const {By} = require('selenium-webdriver');
 //const driver = new webdriver.Builder().forBrowser('chrome').build();
+const localurl = process.env.local_url
+const testurl  = process.env.test_url
+const stageurl = process.env.stage_url
+const prodeurl = process.env.prod_url
+const envpath  = process.env.local || 'local'
+//console.log(localurl, testurl, stageurl, prodeurl)
 
 const {setDefaultTimeout} = require('@cucumber/cucumber');
 const exp = require('constants');
@@ -16,9 +22,9 @@ setDefaultTimeout(60*1000);
 //const driver = require('../../utils.js')
 //require('dotenv').config();
 
-Given('I visit the online bible app', async function () {
+Given('I visit the online bible app in {string}', async function (string) {
    //await config.driver.get(`${config.url}`);
-   await config.driver.get(config.url);
+   await config.driver.get(envpath);
    await config.driver.manage().window().maximize();
    await config.driver.sleep(3000);    
 });

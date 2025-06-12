@@ -1,9 +1,6 @@
 Feature: Ask A Question In Bible Web App
 
-        @tstnine
-        @stgnine
-        @tst
-        @stg
+        @csone
         Scenario: Submit A Question Compiled Steps
             Given I visit the online "bible" app
              Then I nagigate to the signin page

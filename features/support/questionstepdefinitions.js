@@ -18,8 +18,8 @@ setDefaultTimeout(60*1000);
 //require('dotenv').config();
 
 //Step to visit a website
-Given('I visit the online bible {string} app', async function (string) {
-   await config.driver.get(config[string]);
+Given('I visit the online {string} app', async function (string) {
+   await config.driver.get(`https://www.${string}.com/`);
    await config.driver.manage().window().maximize();
    //await config.driver.sleep(5000);    
 });

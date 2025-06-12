@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js",
-    "stage": "cucumber-js"
+    "local": "cross-env local=local_url cucumber-js",
+     "test": "cross-env test=test_url cucumber-js",
+    "stage": "cross-env stage=stage_url cucumber-js",
+     "prod": "cross-env prod=prod_url cucumber-js"
   },
   "keywords": [],
   "author": "",
