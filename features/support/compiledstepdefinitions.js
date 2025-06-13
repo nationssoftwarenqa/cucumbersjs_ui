@@ -14,35 +14,35 @@ setDefaultTimeout(60*1000);
 
 //Navigate to the signin page
 Then('I nagigate to the signin page', async function () {
-   await config.driver.sleep(1000);    
-    let click_elem0 = await config.driver.findElement(By.xpath(elemestFromFile.humbergarMenu));
+   await configs.driver.sleep(1000);    
+    let click_elem0 = await configs.driver.findElement(By.xpath(elemestFromFile.humbergarMenu));
   await click_elem0.click();   
-   await config.driver.sleep(1000);    
-    let click_elem1 = await config.driver.findElement(By.xpath(elemestFromFile.SignIn));
+   await configs.driver.sleep(1000);    
+    let click_elem1 = await configs.driver.findElement(By.xpath(elemestFromFile.SignIn));
   await click_elem1.click();
-    await config.driver.sleep(3000);
+    await configs.driver.sleep(3000);
 })
 
 //Send a question to support team
 Then('send a question to the support team', async function () {
-   await config.driver.sleep(1000);    
-    let   click_elem = await config.driver.findElement(By.xpath(elemestFromFile.questionlink));
+   await configs.driver.sleep(1000);    
+    let   click_elem = await configs.driver.findElement(By.xpath(elemestFromFile.questionlink));
     await click_elem.click();
-    await config.driver.sleep(3000); 
-    let   click_elem1 = await config.driver.findElement(By.xpath(elemestFromFile.questionsfirstname));
+    await configs.driver.sleep(3000); 
+    let   click_elem1 = await configs.driver.findElement(By.xpath(elemestFromFile.questionsfirstname));
     await click_elem1.sendKeys('Nations');
-    let   click_elem2 = await config.driver.findElement(By.xpath(elemestFromFile.questionslastname));
+    let   click_elem2 = await configs.driver.findElement(By.xpath(elemestFromFile.questionslastname));
     await click_elem2.sendKeys('Quality');
-    let   click_elem3 = await config.driver.findElement(By.xpath(elemestFromFile.questionsemail));
+    let   click_elem3 = await configs.driver.findElement(By.xpath(elemestFromFile.questionsemail));
     await click_elem3.sendKeys('nationsquality@gmail.com');
-    let   click_elem4 = await config.driver.findElement(By.xpath(elemestFromFile.questionslanguage));
+    let   click_elem4 = await configs.driver.findElement(By.xpath(elemestFromFile.questionslanguage));
     await click_elem4.sendKeys('English');
-    let   click_elem5 = await config.driver.findElement(By.xpath(elemestFromFile.questionsplatform));
+    let   click_elem5 = await configs.driver.findElement(By.xpath(elemestFromFile.questionsplatform));
     await click_elem5.sendKeys('Web - Bible.com');
-    let   click_elem6 = await config.driver.findElement(By.xpath(elemestFromFile.questionsTypeOfQuestion));
+    let   click_elem6 = await configs.driver.findElement(By.xpath(elemestFromFile.questionsTypeOfQuestion));
     await click_elem6.sendKeys('Other Question');
-    let   click_elem7 = await config.driver.findElement(By.xpath(elemestFromFile.questionsTextArea));
+    let   click_elem7 = await configs.driver.findElement(By.xpath(elemestFromFile.questionsTextArea));
     await click_elem7.sendKeys('The Bible App Is Wonderful');
-    await config.driver.sleep(1000);
-    //await config.driver.findElement(By.xpath("//*[contains(text(),'Submit Form')]"));
+    await configs.driver.sleep(1000);
+    //await configs.driver.findElement(By.xpath("//*[contains(text(),'Submit Form')]"));
 })

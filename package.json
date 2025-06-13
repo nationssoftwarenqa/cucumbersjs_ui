@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "local": "cross-env local=local_url cucumber-js",
-     "test": "cross-env test=test_url cucumber-js",
-    "stage": "cross-env stage=stage_url cucumber-js",
-     "prod": "cross-env prod=prod_url cucumber-js"
+    "local": "cross-env NODE_ENV=local cucumber-js --tags @lcl --format html:report.html",
+     "test": "cross-env NODE_ENV=test  cucumber-js --tags @tst --format html:report.html",
+    "stage": "cross-env NODE_ENV=stage cucumber-js --tags @stg --format html:report.html",
+     "prod": "cross-env NODE_ENV=prod  cucumber-js --tags @lcl --format html:report.html"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,9 @@
   "dependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@cucumber/pretty-formatter": "^1.0.1",
+    "cross-env": "^7.0.3",
+    "custom-env": "^2.0.6",
+    "dotenv": "^16.5.0",
     "selenium-webdriver": "^4.27.0",
     "xpath": "^0.0.34"
   }
