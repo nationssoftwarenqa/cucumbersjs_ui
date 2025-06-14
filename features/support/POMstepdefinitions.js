@@ -2,11 +2,15 @@ const {setTimeout} = require('timers/promises');
 const {Given, When, Then, Before, After} = require('@cucumber/cucumber');
 const fs = require('fs')
 const assert = require('assert')
-const config = require('../../config.js');
+const configs = require('../../configfiles/config.js');
 const elemestFromFile = require('../../resources/elements.json');
 const webdriver = require('selenium-webdriver');
 const {By} = require('selenium-webdriver');
-//const driver = new webdriver.Builder().forBrowser('chrome').build();
+const localurl = process.env.local_url
+const testurl  = process.env.test_url
+const stageurl = process.env.stage_url
+const prodeurl = process.env.prod_url
+//console.log(localurl, testurl, stageurl, prodeurl)
 
 const {setDefaultTimeout} = require('@cucumber/cucumber');
 const exp = require('constants');

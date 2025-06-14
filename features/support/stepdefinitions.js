@@ -2,11 +2,10 @@ const {setTimeout} = require('timers/promises');
 const {Given, When, Then, Before, After} = require('@cucumber/cucumber');
 const fs = require('fs')
 const assert = require('assert')
-const configs = require('../../config.js');
+const configs = require('../../configfiles/config.js');
 const elemestFromFile = require('../../resources/elements.json');
 const webdriver = require('selenium-webdriver');
 const {By} = require('selenium-webdriver');
-//const driver = new webdriver.Builder().forBrowser('chrome').build();
 const localurl = process.env.local_url
 const testurl  = process.env.test_url
 const stageurl = process.env.stage_url
@@ -16,14 +15,11 @@ const prodeurl = process.env.prod_url
 const {setDefaultTimeout} = require('@cucumber/cucumber');
 const exp = require('constants');
 setDefaultTimeout(60*1000);
-//const {expect} = require('chai');
-//const expect = require('expect');
-//const driver = require('../../utils.js')
-//require('dotenv').config();
+
 
 Given('I visit the online bible app', async function () {
    //await configs.driver.get(`${config.url}`);
-   const config = require(`../../config.${process.env.NODE_ENV}.js`);
+   const config = require(`../../configfiles/config.${process.env.NODE_ENV}.js`);
    let urllinks = (`${config.url}`);
 
    await configs.driver.get(urllinks);
@@ -55,6 +51,7 @@ When('I type {string} and hit enter', async function (type) {
 
 
 When('I type users {string} and hit enter', async function (string) {
+    await configs.driver.sleep(2000);    
     let click_elem = await configs.driver.findElement(By.xpath('//*[@id="username"]'));
     //await click_elem.sendKeys('isakafuseini@gmail.com' + "\n");
     await click_elem.sendKeys(`${configs[string]}` + "\n");

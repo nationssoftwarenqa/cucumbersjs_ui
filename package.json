@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "local": "cross-env NODE_ENV=local cucumber-js --tags @lcl --format html:report.html",
-     "test": "cross-env NODE_ENV=test  cucumber-js --tags @tst --format html:report.html",
-    "stage": "cross-env NODE_ENV=stage cucumber-js --tags @stg --format html:report.html",
-     "prod": "cross-env NODE_ENV=prod  cucumber-js --tags @lcl --format html:report.html"
+    "local": "cross-env NODE_ENV=local cucumber-js --format html:local_env-report.html features/**.feature",
+     "test": "cross-env NODE_ENV=test  cucumber-js --format html:tes-env-report.html   features/**.feature",
+    "stage": "cross-env NODE_ENV=stage cucumber-js --format html:stage-env-report.html features/**.feature",
+     "prod": "cross-env NODE_ENV=prod  cucumber-js --format html:prod-env-report.html  features/**.feature"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +20,8 @@
     "dotenv": "^16.5.0",
     "selenium-webdriver": "^4.27.0",
     "xpath": "^0.0.34"
+  },
+  "devDependencies": {
+    "cucumber-html-reporter": "^7.2.0"
   }
 }
